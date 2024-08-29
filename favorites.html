@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Use your existing styles -->
+    <link rel="stylesheet" href="favourites.css">
+    <link rel="stylesheet" href="web-theme.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="dashboard.html">
+                <h4><i class="fas fa-video"></i> N-<span class="hub" style="font-weight: bolder;">Tube</span></h4>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active counter-row" href="favorites.html">
+                            <i class="fas fa-heart"></i> Favorites
+                            <span id="favorites-count"></span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="userInfo" href="user-info.html"><i class="fa-regular fa-pen-to-square"></i> User Info</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-danger" href="#" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Container for Favorite Video Cards -->
+    <div class="container mt-4">
+        <div id="theme-toggle" class="theme-toggle-container mb-4">
+            <div class="chip-button">
+                <div class="toggle-circle"></div>
+            </div>
+        </div>
+        <div id="favorite-video-cards" class="row">
+            <!-- Favorite Video cards will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Modal for Video Popup -->
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" style="background-color: black;">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="color: white;">Video Player</h5>
+                    <button type="button" class="close" data-dismiss="modal" style="color: white" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="videoFrame" src="" frameborder="0" style="height: 350px; width: 100%;"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- --------------Footer------- -->
+    <footer class="text-center text-lg-start text-white" style="background-color: #45526e">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Links -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h4 class="text-uppercase mb-4 font-weight-bold">
+                            <a
+                                href="https://www.linkedin.com/search/results/all/?heroEntityKey=urn%3Ali%3Aorganization%3A35602877&keywords=NAYYARTECH.AI&origin=ENTITY_SEARCH_HOME_HISTORY&sid=odM">NayyarTech.ai</a>
+                        </h4>
+                        <p>
+                            "The only way to learn a new programming language is by writing programs in it." – Dennis
+                            Ritchie
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="w-100 clearfix d-md-none" />
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                        <p>
+                            <a class="text-white" href="dashboard.html">Dashboard</a>
+                        </p>
+                        <p>
+                            <a class="text-white" href="catagories.html">Catagories</a>
+                        </p>
+                        <p>
+                            <a class="text-white" href="favorites.html">Favorites</a>
+                        </p>
+                        <p>
+                            <a class="text-white" href="profile.html">Profile</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="w-100 clearfix d-md-none " />
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">
+                          <a href="developer.html" style="text-decoration: none; color: white;"> Developers </a>
+                        </h6>
+                        <p>
+                            <a href="https://www.linkedin.com/in/asad-abbas-347885309?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"
+                                class="text-white">Asad Abbas</a>
+                        </p>
+                        <p>
+                            <a href="https://www.linkedin.com/in/mudasar-ahmad-72a5bb22a/" target="_blank" class="text-white">Mudasar
+                                Ahmad</a>
+                        </p>
+                        <p>
+                            <a href="https://www.linkedin.com/in/umair-sajid-327303275/" target="_blank"
+                                class="text-white">Umair Sajid</a>
+                        </p>
+                        <p>
+                            <a href="https://www.linkedin.com/in/hamza-ameen-5ba4b4230/" target="_blank" class="text-white">Hamza Ameen</a>
+                        </p>
+                    
+
+
+                    </div>
+
+                    <!-- Grid column -->
+                    <hr class="w-100 clearfix d-md-none" />
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                        <p><i class="fas fa-envelope mailto:mr-3"></i>u7866learn@gmail.com</p>
+                        <p><i class="fas fa-envelope mailto:mr-3"></i>mudasar228013@gmail.com</p>
+                        <p><i class="fas fa-envelope mailto:mr-3"></i>imusajid@gmail.com</p>
+                        <p><i class="fas fa-envelope mailto:mr-3"></i>hamzarajpo514@gmail.com</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+
+            <hr class="my-3">
+
+            <!-- Section: Copyright -->
+            <section class="p-3 pt-0">
+                <div class="row d-flex align-items-center">
+                    <!-- Grid column -->
+                    <div class="col-md-7 col-lg-8 text-center text-md-start">
+                        <!-- Copyright -->
+                        <div class="p-3">
+                            © 2024 Copyright:
+                            <a class="text-white" href="https://nayyartech.ai/" target="_blank">NayyarTech.ai</a>
+                        </div>
+                        <!-- Copyright -->
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+                        <!-- Facebook -->
+                        <a href="https://www.linkedin.com/company/nayyar-tech/" target="_blank" class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="fab fa-linkedin"></i></a>
+
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/nayyartechai?mibextid=ZbWKwL" target="_blank" class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="fab fa-facebook-f"></i></a>
+
+                        <!-- Google -->
+                        <a href="https://nayyartech.ai/" class="btn btn-outline-light btn-floating m-1" target
+                        ="text-white" role="button"><i
+                                class="fab fa-google"></i></a>
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/nayyartech.ai?igsh=bzFyZXdpN3A5YXFy" target="_blank" class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+            </section>
+            <!-- Section: Copyright -->
+        </div>
+        <!-- Grid container -->
+    </footer>
+
+
+
+    <script src="web-theme.js"></script>
+    <script type="module" src="favorites.js"></script> <!-- Include your JavaScript -->
+    <script type="module" src="counter.js"></script>
+    <script type="module" src="auth-check.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const videoModal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+
+            // Clear iframe src when the modal is hidden
+            $(videoModal).on('hidden.bs.modal', () => {
+                videoFrame.src = '';
+            });
+        });
+
+        function openVideo(videoId) {
+            const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            const videoFrame = document.getElementById('videoFrame');
+            videoFrame.src = videoUrl;
+            $('#videoModal').modal('show');
+        }
+    </script>
+
+</body>
+
+</html>

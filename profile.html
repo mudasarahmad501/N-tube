@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">
+                <h4><i class="fas fa-video"></i> N-<span class="hub" style="font-weight: bolder;">Tube</span></h4>
+            </a>
+    
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link counter-row" href="favorites.html">
+                            <i class="fas fa-heart"></i> Favorites 
+                            <span id="favorites-count"></span>
+                        </a>
+                        
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active " href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                    </li>
+                </ul>
+    
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-danger" href="#" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container w-100">
+        <div class="row">
+            <div class="col-md-6 offset-md-3"> <!-- Adjusted column width and centering -->
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                    <!-- Added card with shadow and rounded corners -->
+                    <div class="card-body text-center">
+                        <h2 class="card-title mb-4">User Profile</h2>
+                        <!-- Avatar Container -->
+                        <div>
+                            <img id="profileAvatar" alt="Avatar" style="border-radius: 50%;" />
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <label style="font-weight: bold;">Email:</label>
+                            <p id="userEmail" class="lead"></p>
+                        </div>
+                        <button class="btn btn-danger btn-block mt-4" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- footer  -->
+
+    <footer class="text-center text-lg-start text-white" style="background-color: #45526e">
+        <!-- Grid container -->
+        <div class="container-fluid p-4 pb-0">
+            <!-- Section: Links -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h4 class="text-uppercase mb-4 font-weight-bold">
+                            <a
+                                href="https://www.linkedin.com/search/results/all/?heroEntityKey=urn%3Ali%3Aorganization%3A35602877&keywords=NAYYARTECH.AI&origin=ENTITY_SEARCH_HOME_HISTORY&sid=odM">NayyarTech.ai</a>
+                        </h4>
+                        <p>
+                            "The only way to learn a new programming language is by writing programs in it." – Dennis
+                            Ritchie
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="w-100 clearfix d-md-none" />
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                        <p>
+                            <a class="text-white" href="dashboard.html">Dashboard</a>
+                        </p>
+                        <p>
+                            <a class="text-white" href="catagories.html">Catagories</a>
+                        </p>
+                        <p>
+                            <a class="text-white" href="favorites.html">Favorites</a>
+                        </p>
+                        <p>
+                            <a class="text-white" href="profile.html">Profile</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="w-100 clearfix d-md-none " />
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">
+                          <a href="developer.html" style="text-decoration: none; color: white;"> Developers </a>
+                        </h6>
+                        <p>
+                            <a href="https://www.linkedin.com/in/asad-abbas-347885309?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"
+                                class="text-white">Asad Abbas</a>
+                        </p>
+                        <p>
+                            <a href="https://www.linkedin.com/in/mudasar-ahmad-72a5bb22a/" target="_blank" class="text-white">Mudasar
+                                Ahmad</a>
+                        </p>
+                        <p>
+                            <a href="https://www.linkedin.com/in/umair-sajid-327303275/" target="_blank"
+                                class="text-white">Umair Sajid</a>
+                        </p>
+                        <p>
+                            <a href="https://www.linkedin.com/in/hamza-ameen-5ba4b4230/" target="_blank" class="text-white">Hamza Ameen</a>
+                        </p>
+                    
+
+
+                    </div>
+
+                    <!-- Grid column -->
+                    <hr class="w-100 clearfix d-md-none" />
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                        <p><i class="fas fa-envelope mailto:mr-3"></i>u7866learn@gmail.com</p>
+                        <p><i class="fas fa-envelope mailto:mr-3"></i>mudasar228013@gmail.com</p>
+                        <p><i class="fas fa-envelope mailto:mr-3"></i>imusajid@gmail.com</p>
+                        <p><i class="fas fa-envelope mailto:mr-3"></i>hamzarajpo514@gmail.com</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+
+            <hr class="my-3">
+
+            <!-- Section: Copyright -->
+            <section class="p-3 pt-0">
+                <div class="row d-flex align-items-center">
+                    <!-- Grid column -->
+                    <div class="col-md-7 col-lg-8 text-center text-md-start">
+                        <!-- Copyright -->
+                        <div class="p-3">
+                            © 2024 Copyright:
+                            <a class="text-white" href="https://nayyartech.ai/" target="_blank">NayyarTech.ai</a>
+                        </div>
+                        <!-- Copyright -->
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+                        <!-- Facebook -->
+                        <a href="https://www.linkedin.com/company/nayyar-tech/" target="_blank" class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="fab fa-linkedin"></i></a>
+
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/nayyartechai?mibextid=ZbWKwL" target="_blank" class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="fab fa-facebook-f"></i></a>
+
+                        <!-- Google -->
+                        <a href="https://nayyartech.ai/" class="btn btn-outline-light btn-floating m-1" target
+                        ="text-white" role="button"><i
+                                class="fab fa-google"></i></a>
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/nayyartech.ai?igsh=bzFyZXdpN3A5YXFy" target="_blank" class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+            </section>
+            <!-- Section: Copyright -->
+        </div>
+        <!-- Grid container -->
+    </footer>
+
+
+    <script type="module" src="counter.js"></script>
+    <script type="module" src="auth-check.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Firebase Initialization -->
+    <script src="profile.js"></script>
+
+</body>
+
+</html>

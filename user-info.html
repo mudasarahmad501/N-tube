@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="user.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">
+                <h4><i class="fas fa-video"></i> N-<span class="hub" style="font-weight: bolder;">Tube</span></h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="user-info.html"><i class="fa-regular fa-pen-to-square"></i>
+                            User Info</a>
+                    </li>
+
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-danger" href="#" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="form">
+        <div class="container mt-4">
+            <form id="user-info-form">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>User Details</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="user-name">Name:</label>
+                                    <input type="text" id="user-name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="user-age">Age:</label>
+                                    <input type="number" id="user-age" class="form-control" min="0" max="100" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="user-profession">Interest:</label>
+                                    <select id="user-profession" class="form-control" required>
+                                        <option value="">Select Interest</option>
+                                        <option value="Programming">Programming</option>
+                                        <option value="Design & Creativity">Design & Creativity</option>
+                                        <option value="Business & Marketing">Business & Marketing</option>
+                                        <option value="Engineering">Engineering</option>
+                                        <option value="Science & Mathematics">Science & Mathematics</option>
+                                        <option value="Personal Development">Personal Development</option>
+                                        <option value="Health & Fitness">Health & Fitness</option>
+                                        <option value="Arts & Humanities">Arts & Humanities</option>
+                                        <option value="Kids & Education">Kids & Education</option>
+                                        <option value="Miscellaneous">Miscellaneous</option>
+                                        <option value="Sports">Sports</option>
+                                        <option value="Entertainment">Entertainment</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group" id="subcategories-container" style="display: none;">
+                                    <label for="user-subcategories">Subcategories: <span style="font-size: 14px;">(you
+                                            can select Multiple)</span></label>
+                                    <select id="user-subcategories" class="form-control js-example-basic-multiple"
+                                        multiple="multiple" name="subcategories[]" required>
+                                        <!-- Subcategories will be dynamically added here -->
+                                    </select>
+                                </div>
+
+
+                                <button type="submit" style="width: 100%;" class="btn btn-danger">Save</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <script type="module" src="user-info.js"></script>
+    <script type="module" src="auth-check.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+</body>
+
+</html>

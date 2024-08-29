@@ -1,0 +1,70 @@
+.close {
+    color: white;
+}
+
+.close:hover {
+    color: white;
+}
+.nav-link:hover{
+    color: red !important;
+}
+
+a {
+    color: red;
+    text-decoration: none;
+    background-color: transparent;
+}
+#favorites-count {
+    background-color: red; 
+    color: #fff; 
+    font-size: 14px; 
+    padding: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.counter-row{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.dashboard-text {
+    color: #fff !important;
+}
+
+footer {
+    margin-top: 150px;
+    background-color: #333 !important;
+}
+
+hr {
+    background-color: white;
+}
+
+footer h4 a {
+    color: white;
+}
+
+footer h4 a:hover {
+    color: red;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    transition: color 0.3s;
+}
+
+.card:hover .card-title {
+    color: #ff4757;
+}

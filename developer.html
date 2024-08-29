@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="developers.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="dashboard.html">
+                <h4><i class="fas fa-video"></i>
+                    </i> N-<span class="hub" style="font-weight: bolder;">Tube</span></h4>
+            </a>
+
+            <div id="navbarNav">
+                <i id="backButton" class="fa-solid fa-arrow-left ms-auto text-white bg-danger p-2 rounded" style="cursor: pointer;"></i>
+
+                <!-- <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-danger" href="#" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+    </nav>
+    <section class="team-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Development Team</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="team-member text-center p-3">
+                        <div class="member-photo">
+                            <img src="asad.jpg" class="rounded-circle" alt="Team Member">
+                        </div>
+                        <h3 class="member-name mt-3">Asad Abbas</h3>
+                        <p class="member-role">QA</p>
+                        <p class="member-description">Asad ensures that our software is of the highest quality,
+                            rigorously testing each aspect to deliver a flawless user experience.</p>
+                        <div class="social-icons mt-3">
+                            <a href="https://www.linkedin.com/in/asad-abbas-347885309?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                                target="_blank" class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member text-center p-3">
+                        <div class="member-photo">
+                            <img src="mud.jpg" class="rounded-circle" alt="Team Member">
+                        </div>
+                        <h3 class="member-name mt-3">Mudasar Ahmad</h3>
+                        <p class="member-role">Backend Developer</p>
+                        <p class="member-description">Mudasar specializes in building the server-side logic that powers
+                            our applications, ensuring robust and scalable backend solutions.</p>
+                        <div class="social-icons mt-3">
+                            <a href="https://www.linkedin.com/in/mudasar-ahmad-72a5bb22a/" target="_blank"
+                                class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member text-center p-3">
+                        <div class="member-photo">
+                            <img src="umair.JPG" class="rounded-circle" alt="Team Member">
+                        </div>
+                        <h3 class="member-name mt-3">Umair Sajid</h3>
+                        <p class="member-role">Frontend Developer</p>
+                        <p class="member-description">Umair is our frontend expert, creating visually appealing and
+                            highly responsive user interfaces that deliver a seamless experience.</p>
+                        <div class="social-icons mt-3">
+                            <a href="https://www.linkedin.com/in/umair-sajid-327303275/" target="_blank"
+                                class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ms-auto me-auto mt-4">
+                    <div class="team-member text-center p-3">
+                        <div class="member-photo">
+                            <img src="hamza.jpeg" class="rounded-circle" alt="Team Member">
+                        </div>
+                        <h3 class="member-name mt-3">Hamza Azeem</h3>
+                        <p class="member-role">Backend Developer</p>
+                        <p class="member-description">Hamza works on developing efficient backend systems that are
+                            critical for the smooth operation and performance of our software.</p>
+                        <div class="social-icons mt-3">
+                            <a href="https://www.linkedin.com/in/hamza-ameen-5ba4b4230/" target="_blank"
+                                class="text-dark me-3"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('backButton').addEventListener('click', function () {
+            window.history.back();
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script type="module" src="auth-check.js"></script>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

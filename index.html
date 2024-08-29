@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodingHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <h3><i class="fas fa-video"></i> N-<span class="hub">Tube</span></h3>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showSignin()" style="color: #fff;">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn signup" href="#" onclick="showSignup()">Sign Up</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div id="app">
+            <!-- Signup Form -->
+            <div id="signup-form" class="form-container">
+                <h2>Sign Up</h2>
+                <input type="text" id="signup-username" placeholder="Username" required>
+                <div class="password-container">
+                    <input type="email" id="signup-email" placeholder="Email" required>
+                    <!-- Error message will be inserted here -->
+                </div>
+                <div class="password-container">
+                    <input type="password" id="signup-password" placeholder="Password" required>
+                    <i id="signup-password-eye" class="fas fa-eye eye-icon"
+                        onclick="togglePasswordVisibility('signup-password', 'signup-password-eye')"></i>
+                    <!-- Error message will be inserted here -->
+                </div>
+                <div class="password-container">
+                    <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+                    <i id="signup-confirm-password-eye" class="fas fa-eye eye-icon"
+                        onclick="togglePasswordVisibility('signup-confirm-password', 'signup-confirm-password-eye')"></i>
+                    <!-- Error message will be inserted here -->
+                </div>
+                <button onclick="signup()">Sign Up</button>
+                <button id="google-signup-btn" class="btn btn-google my-4">
+                    <i class="fab fa-google"></i> Sign Up with Google
+                </button>
+                
+                <p>Already have an account? <a href="#" onclick="showSignin()">Sign In</a></p>
+            </div>
+
+            <!-- Signin Form -->
+            <div id="signin-form" class="form-container" style="display:none;">
+                <h2>Sign In</h2>
+                <div class="password-container">
+                    <input type="email" id="signin-email" placeholder="Email" required>
+                    <!-- Error message will be inserted here -->
+                </div>
+                <div class="password-container">
+                    <input type="password" id="signin-password" placeholder="Password" required>
+                    <i id="signin-password-eye" class="fas fa-eye eye-icon"
+                        onclick="togglePasswordVisibility('signin-password', 'signin-password-eye')"></i>
+                    <!-- Error message will be inserted here -->
+                </div>
+                <button onclick="signin()">Sign In</button>
+                <button id="google-signin-btn" class="btn btn-google my-4">
+                    <i class="fab fa-google"></i> Sign In with Google
+                </button>
+                
+                <p>Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
+                <p><a href="#" onclick="showForgotPassword()">Forgot Password?</a></p>
+            </div>
+
+            <!-- Forgot Password Form -->
+            <div id="forgot-password-form" class="form-container" style="display:none;">
+                <h2>Forgot Password</h2>
+                <input type="email" id="forgot-email" placeholder="Email" required>
+                <!-- Error message will be inserted here -->
+                <button onclick="forgotPassword()">Reset Password</button>
+                <p><a href="#" onclick="showSignin()">Back to Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="scripts.js"></script>
+    <script type="module" src="counter.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function togglePasswordVisibility(passwordId, eyeIconId) {
+            const passwordInput = document.getElementById(passwordId);
+            const eyeIcon = document.getElementById(eyeIconId);
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+    </script>
+</body>
+
+</html>

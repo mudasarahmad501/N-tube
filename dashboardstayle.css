@@ -1,0 +1,387 @@
+.scrolling-bar-container {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    /* margin-top: 10px; */
+}
+
+
+
+/* body{
+    background-color: black;
+} */
+.scrolling-wrapper {
+    overflow: hidden;
+    /* Hide the scrollbar */
+    flex-grow: 1;
+    /* Allow the wrapper to take available space */
+}
+#favorites-count {
+    background-color: red; 
+    color: #fff; 
+    font-size: 14px; 
+    padding: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.counter-row{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+/* ---------------------Navbar dropdown cat----------------- */
+.nav-link:hover{
+    color: red !important;
+}
+.cat{
+    color: white !important;
+    
+    margin-right: 5px;
+   
+}
+.cat:hover{
+    color: red !important;
+}
+.dropdown-menu .dropdown-item {
+    color: black; /* Default text color */
+}
+
+/* Change color on hover */
+.dropdown-menu .dropdown-item:hover {
+
+    color: white; /* Text color when hovered */
+    background-color: red; /* Optional: change background color on hover for better visibility */
+}
+
+
+
+
+.scrolling-bar {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    transition: transform 0.3s ease-in-out;
+    /* Smooth scrolling */
+}
+
+.scrolling-bar li {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.3s;
+}
+
+.scrolling-bar li:hover {
+    background-color: red;
+    color: white;
+}
+
+.scroll-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+
+.scroll-btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.scroll-btn:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}
+
+
+/* Ensure all cards have the same height */
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex-grow: 1;
+}
+
+.modal-content {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.modal-content iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    color: red;
+    text-decoration: none;
+    background-color: transparent;
+}
+/* Highlight the active language */
+.scrolling-bar li.selected-subcategory {
+    background-color: red;
+    color: white;
+ }
+
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3); /* White shadow */
+}
+
+.card-title {
+    transition: color 0.3s;
+}
+
+.card:hover .card-title {
+    color: #ff4757;
+}
+
+
+.close {
+    color: white;
+}
+.close:hover {
+    color: white;
+}
+
+/* -----------------More video button ------------------- */
+.center-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Adjust as needed */
+}
+
+#view-more-btn:focus {
+   outline: none;
+   box-shadow: none
+}
+
+/* --------------video popup---------------- */
+
+
+.modal-content {
+    max-height: 90vh; /* Adjust to fit your needs */
+    overflow-y: auto;
+}
+
+.modal-body {
+    padding: 15px;
+}
+
+.suggestions {
+    margin-top: 20px;
+}
+
+.suggestion-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.suggestion-card img {
+    width: 120px;
+    height: 90px;
+    margin-right: 10px;
+}
+
+.suggestion-card .suggestion-info {
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+/* ------Search bar style --------- */
+/* Add this to your existing CSS file */
+#searchForm {
+    position: relative; /* Ensure the container is positioned relative */
+}
+
+
+
+#suggestions.show {
+    display: block;
+}
+
+#suggestions .dropdown-item {
+    cursor: pointer;
+    padding: 10px;
+}
+
+#suggestions .dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+.scrolling-bar-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.scrolling-bar {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.scrolling-bar li {
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+}
+#suggestions {
+    position: absolute;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    display: none; /* Hidden by default */
+    max-height: 200px; /* Optional: limit the height of the suggestions box */
+    overflow-y: auto; /* Add scroll if suggestions exceed max-height */
+    width: 100%; /* Match the width of the search bar */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow for better visibility */
+}
+
+#suggestions.show {
+    display: block; /* Show when needed */
+}
+
+#suggestions .dropdown-item.active {
+    background-color: rgb(100, 100, 247);
+    color: white;
+}
+
+
+
+
+.dropdown-menu {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Ensure the background is visible */
+}
+/* styles.css */
+.navbar .form-inline {
+    display: flex;
+    justify-content: center; /* Center align the content horizontally */
+    width: 100%; /* Make the form take up the full width of its container */
+}
+.navbar .form-inline:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar .form-inline .form-control {
+    width: 100%; /* Make the input field take up the full width of the form */
+    max-width: 500px; /* Optional: Set a max-width to control the search bar's size */
+}
+
+.fav-link{
+    color: white !important;
+}
+.favorite-icon {
+    color: grey; 
+    font-size: 24px; 
+    float: right;
+}
+
+
+.favorite-icon.fas {
+    color: red;
+}
+
+footer{
+    margin-top: 400px;
+    background-color: #333 !important;
+}
+hr{
+    background-color: white;
+}
+footer h4 a{
+    color:white;
+}
+footer h4 a:hover{
+    color:red;
+}
+
+
+/* ------------Responsive------------- */
+@media (max-width: 800px) {
+    .prompt-box h3 {
+        color: black;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 24px;
+    }
+    
+}
+@media (max-width: 600px){
+    .form-control{
+        margin-bottom: 10px;
+    }
+    .prompt-box {
+        background: #333;
+        color: #fff; 
+        padding: 60px 0; 
+        text-align: center;
+        z-index: 10; 
+        /* position: fixed; */
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border-radius: 6px;
+        
+    }
+    
+    .prompt-box h2 {
+        font-size: 1rem; 
+        margin-bottom: 20px;
+    }
+    
+    .prompt-box h1 {
+        font-size: 1.5rem; 
+        margin-bottom: 20px; 
+        font-weight: bold; 
+    }
+    
+    .prompt-box .lead {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    footer{
+        margin-top: 500px;
+    }
+}
+
+

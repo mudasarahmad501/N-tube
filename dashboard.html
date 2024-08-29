@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Use your existing styles -->
+    <link rel="stylesheet" href="dashboardstayle.css">
+    <link rel="stylesheet" href="web-theme.css">
+    <style>
+        .modal-fullscreen {
+            max-width: 100% !important;
+        }
+
+        .suggestion-card {
+            cursor: pointer;
+            padding: 10px;
+            font-size: 13px;
+            
+            /* border: 1px solid white; */
+        }
+
+        .suggestion-card:hover {
+            background-color: #1e1e1e;
+        }
+
+        @media (max-width: 991px) {
+            .suggest{
+                margin-top: 50%;
+            }
+        }
+        @media (max-width: 768px) {
+            .suggest{
+                margin-top: 60%;
+            }
+        }
+        @media (max-width:  576px) {
+            .suggest{
+                margin-top: 80%;
+            }
+        }
+        @media (max-width:  425px) {
+            .suggest{
+                margin-top: 120%;
+            }
+        }
+        @media (max-width:  375px) {
+            .suggest{
+                margin-top: 140%;
+            }
+        }
+        @media (max-width:  320px) {
+            .suggest{
+                margin-top: 150%;
+            }
+        }
+        
+        
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">
+                <h4><i class="fas fa-video"></i> N-<span class="hub" style="font-weight: bolder;">Tube</span></h4>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dashboard.html"><i class="fas fa-tachometer-alt"></i>
+                            Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link counter-row" href="favorites.html">
+                            <i class="fas fa-heart"></i> Favorites
+                            <span id="favorites-count"></span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="userInfo" href="user-info.html"><i
+                                class="fa-regular fa-pen-to-square"></i> User Info</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mr-3">
+                        <form id="searchForm" class="form-inline">
+                            <input type="text" id="searchInput" class="form-control" autocomplete="off"
+                                placeholder="Search your query...">
+                            <div id="suggestions" class="dropdown-menu"></div>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-danger" href="#" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Scrolling Bar -->
+    <div class="scrolling-bar-container">
+        <div class="scrolling-wrapper">
+            <ul class="scrolling-bar">
+
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- -------------------Loader -->
+
+    <div id="loading-icon" style="display: none; text-align: center;color: red; margin-top: 20px;">
+        <i class="fas fa-spinner fa-spin fa-2x mt-4"></i> <!-- Font Awesome spinner icon -->
+    </div>
+
+
+
+    <!-- Container for Video Cards -->
+    <div class="container mt-4">
+        <div id="theme-toggle" class="theme-toggle-container mb-4">
+            <div class="chip-button">
+                <div class="toggle-circle"></div>
+            </div>
+        </div>
+        <div id="video-cards" class="row ">
+            <!-- Video cards will be dynamically inserted here -->
+        </div>
+
+        <div class="center-button-container">
+            <button id="view-more-btn" class="btn btn-danger">View More</button>
+        </div>
+
+    </div>
+
+    <!-- Modal for Video Popup -->
+    <div id="videoModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-fullscreen" role="document">
+            <div class="modal-content" style="background-color: black; max-height: 90vh; overflow-y: auto;">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="color: white;">Video Player</h5>
+                    <button type="button" class="close" data-dismiss="modal" style="color: white" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Video Section -->
+                        <div class="col-md-12 col-lg-8 mb-4" >
+                            <iframe id="videoFrame" src="" frameborder="0" style="height: 500px"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                        <!-- Suggestions Section -->
+                        <div class="suggest col-md-12 col-lg-4">
+                            <div id="suggestion-container" class="suggestions">
+                                <!-- Suggested videos will be dynamically inserted here -->
+                                <div class="suggestion-card mb-3"
+                                    data-video-url="https://www.youtube.com/embed/VIDEO_ID">
+                                    <img src="thumbnail.jpg" alt="Suggested Video Thumbnail" style="height: 100%; width: 100%;">
+                                    <div class="suggestion-info">
+                                        <h6 class="text-white">Suggested Video Title</h6>
+                                        <p class="text-muted">Channel Name</p>
+                                    </div>
+                                </div>
+                                <!-- Additional suggestion cards -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ---------------------Foooter----------------- -->
+    <footer class="text-center text-lg-start text-white" style="background-color: #45526e">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Links -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h4 class="text-uppercase mb-4 font-weight-bold">
+                            <a
+                                href="https://www.linkedin.com/search/results/all/?heroEntityKey=urn%3Ali%3Aorganization%3A35602877&keywords=NAYYARTECH.AI&origin=ENTITY_SEARCH_HOME_HISTORY&sid=odM">NayyarTech.ai</a>
+                        </h4>
+                        <p>
+                            "The only way to learn a new programming language is by writing programs in it." – Dennis
+                            Ritchie
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="w-100 clearfix d-md-none" />
+
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                        <p>
+                            <a class="text-white" href="dashboard.html">Dashboard</a>
+                        </p>
+                        <p>
+                            <a class="text-white" href="catagories.html">Catagories</a>
+                        </p>
+                        <p>
+                            <a class="text-white" href="favorites.html">Favorites</a>
+                        </p>
+                        <p>
+                            <a class="text-white" href="profile.html">Profile</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="w-100 clearfix d-md-none " />
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">
+                            <a href="developer.html" style="text-decoration: none; color: white;"> Developers </a>
+                        </h6>
+                        <p>
+                            <a href="https://www.linkedin.com/in/asad-abbas-347885309?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                                target="_blank" class="text-white">Asad Abbas</a>
+                        </p>
+                        <p>
+                            <a href="https://www.linkedin.com/in/mudasar-ahmad-72a5bb22a/" target="_blank"
+                                class="text-white">Mudasar
+                                Ahmad</a>
+                        </p>
+                        <p>
+                            <a href="https://www.linkedin.com/in/umair-sajid-327303275/" target="_blank"
+                                class="text-white">Umair Sajid</a>
+                        </p>
+                        <p>
+                            <a href="https://www.linkedin.com/in/hamza-ameen-5ba4b4230/" target="_blank"
+                                class="text-white">Hamza Ameen</a>
+                        </p>
+
+
+
+                    </div>
+
+                    <!-- Grid column -->
+                    <hr class="w-100 clearfix d-md-none" />
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                        <p><i class="fas fa-envelope mailto:mr-3"></i>u7866learn@gmail.com</p>
+                        <p><i class="fas fa-envelope mailto:mr-3"></i>mudasar228013@gmail.com</p>
+                        <p><i class="fas fa-envelope mailto:mr-3"></i>imusajid@gmail.com</p>
+                        <p><i class="fas fa-envelope mailto:mr-3"></i>hamzarajpo514@gmail.com</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+
+            <hr class="my-3">
+
+            <!-- Section: Copyright -->
+            <section class="p-3 pt-0">
+                <div class="row d-flex align-items-center">
+                    <!-- Grid column -->
+                    <div class="col-md-7 col-lg-8 text-center text-md-start">
+                        <!-- Copyright -->
+                        <div class="p-3">
+                            © 2024 Copyright:
+                            <a class="text-white" href="https://nayyartech.ai/" target="_blank">NayyarTech.ai</a>
+                        </div>
+                        <!-- Copyright -->
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+                        <!-- Facebook -->
+                        <a href="https://www.linkedin.com/company/nayyar-tech/" target="_blank"
+                            class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="fab fa-linkedin"></i></a>
+
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/nayyartechai?mibextid=ZbWKwL" target="_blank"
+                            class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="fab fa-facebook-f"></i></a>
+
+                        <!-- Google -->
+                        <a href="https://nayyartech.ai/" class="btn btn-outline-light btn-floating m-1"
+                            target="text-white" role="button"><i class="fab fa-google"></i></a>
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/nayyartech.ai?igsh=bzFyZXdpN3A5YXFy" target="_blank"
+                            class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+            </section>
+            <!-- Section: Copyright -->
+        </div>
+        <!-- Grid container -->
+    </footer>
+    <!-- Footer -->
+
+    <!-- End of .container -->
+
+    <script src="web-theme.js"></script>
+    <script type="module" src="dashboard.js"></script> <!-- Include your JavaScript -->
+    <script type="module" src="counter.js"></script>
+    <script type="module" src="auth-check.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script type="module">
+        // Import Firebase SDKs
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js';
+        import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js';
+
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDWmZIxV9Ar4fEWWJF17C0L4XhxtGPlI9E",
+            authDomain: "coding-hub-99458.firebaseapp.com",
+            projectId: "coding-hub-99458",
+            storageBucket: "coding-hub-99458.appspot.com",
+            messagingSenderId: "842265093879",
+            appId: "1:842265093879:web:f5e8c4a5eea7dfc2b055f2"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Function to update the user email display
+        function updateUserEmail() {
+            const userEmailElement = document.getElementById('user-email');
+
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // User is signed in
+                    const email = user.email;
+                    if (userEmailElement) {
+                        userEmailElement.textContent = email || 'No email available';
+                    }
+                } else {
+                    // User is not signed in
+                    if (userEmailElement) {
+                        userEmailElement.textContent = 'Guest';
+                    }
+                }
+            });
+        }
+
+        // Call the function to update user email when the page loads
+        document.addEventListener('DOMContentLoaded', updateUserEmail);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to set the video in the iframe
+            function playVideo(url) {
+                var videoFrame = document.getElementById('videoFrame');
+                if (url) {
+                    videoFrame.src = url;
+                } else {
+                    console.error('No video URL provided');
+                }
+            }
+
+            // Function to add event listeners to suggestion cards
+            function addSuggestionEventListeners() {
+                var suggestionCards = document.querySelectorAll('.suggestion-card');
+
+                suggestionCards.forEach(function (card) {
+                    card.addEventListener('click', function () {
+                        var videoUrl = this.getAttribute('data-video-url');
+                        if (videoUrl) {
+                            console.log('Playing video:', videoUrl); // Debugging line
+                            playVideo(videoUrl);
+                        } else {
+                            console.error('No data-video-url attribute found');
+                        }
+                    });
+                });
+            }
+
+            // Add event listeners to suggestion cards when the modal opens
+            $('#videoModal').on('shown.bs.modal', function () {
+                addSuggestionEventListeners();
+            });
+
+            // Clear the iframe source when the modal is closed
+            $('#videoModal').on('hidden.bs.modal', function () {
+                var videoFrame = document.getElementById('videoFrame');
+                videoFrame.src = ''; // Stop the video
+            });
+        });
+
+
+
+    </script>
+
+
+
+
+</body>
+
+
+</html>
